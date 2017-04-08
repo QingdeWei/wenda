@@ -17,6 +17,10 @@
         <setting name="useGeneratedKeys" value="true"/>
     </settings>
 
+    <!--<mappers>-->
+        <!--<mapper class="com.nowcoder.dao.UserDAO"/>-->
+    <!--</mappers>-->
+
     <!-- Continue going here -->
 
 </configuration>

@@ -4,16 +4,16 @@ package com.nowcoder.model;
  * Created by ZGH on 2017/4/1.
  */
 public class User {
-
     private int id;
     private String name;
     private String password;
     private String salt;
     private String headUrl;
 
-    public User(){}
+    public User() {
 
-    public User(String name){
+    }
+    public User(String name) {
         this.name = name;
         this.password = "";
         this.salt = "";
@@ -52,11 +52,11 @@ public class User {
         this.salt = salt;
     }
 
-    public String getheadUrl() {
+    public String getHeadUrl() {
         return headUrl;
     }
 
-    public void setheadUrl(String headUrl) {
+    public void setHeadUrl(String headUrl) {
         this.headUrl = headUrl;
     }
 }
