@@ -44,7 +44,7 @@ public class InitDatabaseTests {
             Question question = new Question();
             question.setCommentCount(i);
             Date date = new Date();
-            date.setTime(date.getTime() + 1000 * 3600 + i);
+            date.setTime(date.getTime() + 1000 * 3600 * i);
             question.setCreatedDate(date);
             question.setUserId(i + 1);
             question.setTitle(String.format("TITLE{%d}", i));
@@ -57,6 +57,7 @@ public class InitDatabaseTests {
         Assert.assertNull(userDAO.selectById(1));
 
         System.out.println(questionDAO.selectLatestQuestions(0,0,10));
+//        questionDAO.selectLatestQuestions(0,0,10);
 
     }
 

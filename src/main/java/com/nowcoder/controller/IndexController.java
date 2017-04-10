@@ -19,7 +19,7 @@ import java.util.*;
 /**
  * Created by ZGH on 2017/3/31.
  */
-@Controller
+//@Controller
 public class IndexController {
     @Autowired
     WendaService wendaService;
