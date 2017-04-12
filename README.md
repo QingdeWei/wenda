@@ -14,3 +14,9 @@
 > MyBatis官方文档：http://www.mybatis.org/mybatis-3/zh/index.html
 
 > MySQL官方文档：https://dev.mysql.com/doc/
+
+> The API specification for the Java™ Platform, Standard Edition：http://docs.oracle.com/javase/7/docs/api/index.html?overview-summary.html
+
+## 程序员问答社区：
+> StackOverflow网站：http://stackoverflow.com/
+
