@@ -15,6 +15,7 @@
 
 > MySQL官方文档：https://dev.mysql.com/doc/     下载MySQL手册链接：http://downloads.mysql.com/docs/refman-5.7-en.pdf
 
+> HTTP协议官网：https://www.w3.org/Protocols/
 
 > The API specification for the Java™ Platform, Standard Edition：http://docs.oracle.com/javase/7/docs/api/index.html?overview-summary.html
 
