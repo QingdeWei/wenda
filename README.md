@@ -13,7 +13,8 @@
 
 > MyBatis官方文档：http://www.mybatis.org/mybatis-3/zh/index.html
 
-> MySQL官方文档：https://dev.mysql.com/doc/
+> MySQL官方文档：https://dev.mysql.com/doc/     下载MySQL手册链接：http://downloads.mysql.com/docs/refman-5.7-en.pdf
+
 
 > The API specification for the Java™ Platform, Standard Edition：http://docs.oracle.com/javase/7/docs/api/index.html?overview-summary.html
 
