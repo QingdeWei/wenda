@@ -5,9 +5,9 @@
 
 > Velocity Engine Guide： http://velocity.apache.org/engine/devel/user-guide.html 
 
-> SpringBoost项目创建官方入口：http://projects.spring.io/spring-boot/#quick-start 
+> SpringBoot项目创建官方入口：http://projects.spring.io/spring-boot/#quick-start 
 
-> SpringBoost项目官方文档： https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/ 
+> SpringBoot项目官方文档： https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/ 
 
 > Maven官方网站：http://maven.apache.org/
 
@@ -18,7 +18,9 @@
 > The API specification for the Java™ Platform, Standard Edition：http://docs.oracle.com/javase/7/docs/api/index.html?overview-summary.html
 
 ## HTTP协议相关官网
-> HTTP响应状态代码列表：https://www.w3.org/Protocols/
+> HTTP协议官网：https://www.w3.org/Protocols/
+
+> HTTP响应状态代码列表：https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
 
 > URI官方介绍文档：http://www.ietf.org/rfc/rfc2396.txt
 
