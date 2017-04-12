@@ -15,10 +15,11 @@
 
 > MySQL官方文档：https://dev.mysql.com/doc/     下载MySQL手册链接：http://downloads.mysql.com/docs/refman-5.7-en.pdf
 
-> HTTP协议官网：https://www.w3.org/Protocols/
-
 > The API specification for the Java™ Platform, Standard Edition：http://docs.oracle.com/javase/7/docs/api/index.html?overview-summary.html
 
+## HTTP协议相关官网
+> HTTP响应状态代码列表：https://www.w3.org/Protocols/
+> URI官方介绍文档：http://www.ietf.org/rfc/rfc2396.txt
 ## 程序员问答社区：
 > StackOverflow网站：http://stackoverflow.com/
 
