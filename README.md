@@ -24,6 +24,10 @@
 
 > URI官方介绍文档：http://www.ietf.org/rfc/rfc2396.txt
 
+## 其他帮助文档
+> 拦截器：http://www.mkyong.com/spring-mvc/spring-mvc-handler-interceptors-example/
+> MD5和salt： http://www.tuicool.com/articles/AryyIr
+
 ## 程序员问答社区：
 > StackOverflow网站：http://stackoverflow.com/
 
