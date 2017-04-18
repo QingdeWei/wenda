@@ -25,8 +25,8 @@ public class UserService {
 
 
 
-    public Map<String, String> register (String username, String password){
-        Map<String, String> map = new HashMap<String, String>();
+    public Map<String, Object> register (String username, String password){
+        Map<String, Object> map = new HashMap<String, Object>();
         if (StringUtils.isBlank(username)){
             map.put("msg", "用户名不能为空");
             return map;
@@ -45,6 +45,7 @@ public class UserService {
         * */
         user = new User();
         user.setName(username);
+        //根据UUID生成一个随机的salt
         user.setSalt(UUID.randomUUID().toString().substring(0,5));
         // Set user's head photo
         user.setHeadUrl(String.format("http://images.nowcoder.com/head/%dt.png", new Random().nextInt(1000)));
@@ -58,8 +59,8 @@ public class UserService {
     }
 
 
-    public Map<String, String> login (String username, String password){
-        Map<String, String> map = new HashMap<String, String>();
+    public Map<String, Object> login (String username, String password){
+        Map<String, Object> map = new HashMap<String, Object>();
         if (StringUtils.isBlank(username)){
             map.put("msg", "用户名不能为空");
             return map;
@@ -99,6 +100,10 @@ public class UserService {
 
      public User getUser(int id){
         return userDAO.selectById(id);
+    }
+
+    public void logout(String ticket){
+        loginTicketDAO.updateStatus(ticket,1);
     }
 
 }
