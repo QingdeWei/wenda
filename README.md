@@ -19,6 +19,8 @@
 
 > SpringBoot项目官方文档： https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/ 
 
+> SpringMVC官方文档（4.3.8.RELEASE）：http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/
+
 > Maven官方网站：http://maven.apache.org/
 
 > MyBatis官方文档：http://www.mybatis.org/mybatis-3/zh/index.html
@@ -38,6 +40,7 @@
 
 ## 其他帮助文档
 > 拦截器：http://www.mkyong.com/spring-mvc/spring-mvc-handler-interceptors-example/
+
 > MD5和salt： http://www.tuicool.com/articles/AryyIr
 
 ## 程序员问答社区：
