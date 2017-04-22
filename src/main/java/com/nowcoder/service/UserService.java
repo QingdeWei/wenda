@@ -23,10 +23,9 @@ public class UserService {
     @Autowired
     LoginTicketDAO loginTicketDAO;
 
-
-
-    public Map<String, Object> register (String username, String password){
-        Map<String, Object> map = new HashMap<String, Object>();
+    public Map<String, String> register (String username, String password){
+        Map<String, String> map = new HashMap<String, String>();
+        //StringUtils是apache的common类里的help类
         if (StringUtils.isBlank(username)){
             map.put("msg", "用户名不能为空");
             return map;
@@ -51,7 +50,7 @@ public class UserService {
         user.setHeadUrl(String.format("http://images.nowcoder.com/head/%dt.png", new Random().nextInt(1000)));
         user.setPassword(WendaUtil.MD5(password + user.getSalt()));
         userDAO.addUser(user);
-        //一注册完就登陆
+        //一注册完就登陆,下发ticket
         String ticket = addLoginTicket(user.getId());
         map.put("ticket", ticket);
 
@@ -59,8 +58,8 @@ public class UserService {
     }
 
 
-    public Map<String, Object> login (String username, String password){
-        Map<String, Object> map = new HashMap<String, Object>();
+    public Map<String, String> login (String username, String password){
+        Map<String, String> map = new HashMap<String, String>();
         if (StringUtils.isBlank(username)){
             map.put("msg", "用户名不能为空");
             return map;

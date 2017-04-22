@@ -24,8 +24,6 @@ public class LogAspect {
             sb.append("arg:" + arg.toString() + "|");
         }
         logger.info("before method: " + sb.toString());
-
-
     }
 
     @After("execution(* com.nowcoder.controller.IndexController.*(..))")

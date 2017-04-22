@@ -11,7 +11,7 @@ import java.util.List;
  * Created by ZGH on 2017/4/10.
  */
 @Service
-public class QuestionService {
+public class    QuestionService {
     @Autowired
     QuestionDAO questionDAO;
     public List<Question> getLatestQuestions(int userId, int offset, int limit){

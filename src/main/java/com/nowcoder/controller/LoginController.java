@@ -2,6 +2,8 @@ package com.nowcoder.controller;
 
 import com.nowcoder.service.UserService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
+
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,77 +32,61 @@ public class LoginController {
     @RequestMapping(path = {"/reg/"}, method = {RequestMethod.POST})
     public String reg(Model model, @RequestParam("username") String username,
                       @RequestParam("password") String password,
-                      @RequestParam("next") String next,
-                      @RequestParam(value="rememberme", defaultValue = "false") boolean rememberme,
-                      HttpServletResponse response) {
-        try {
-            Map<String, Object> map = userService.register(username, password);
-            if (map.containsKey("ticket")) {
-                Cookie cookie = new Cookie("ticket", map.get("ticket").toString());
+                      HttpServletResponse response){
+        try{
+            Map<String, String> map = userService.register(username,password);
+
+            if ( map.containsKey("ticket")){
+                Cookie cookie = new Cookie("ticket", map.get("ticket"));
                 cookie.setPath("/");
-                if (rememberme) {
-                    cookie.setMaxAge(3600*24*5);
-                }
-                response.addCookie(cookie);
-                if (StringUtils.isNotBlank(next)) {
-                    return "redirect:" + next;
-                }
+                response.addCookie(cookie);//浏览器下发一个ticket
                 return "redirect:/";
-            } else {
+            }else {
                 model.addAttribute("msg", map.get("msg"));
                 return "login";
             }
 
-        } catch (Exception e) {
-            logger.error("注册异常" + e.getMessage());
+//            if(map.containsKey("msg")) {
+//                model.addAttribute("msg", map.get("msg"));
+//                return "login";
+//            }
+        }catch (Exception e){
+            logger.error("密码错误",e.getMessage());
             model.addAttribute("msg", "服务器错误");
             return "login";
         }
+//        return "redirect:/";
     }
 
     @RequestMapping(path = {"/reglogin"}, method = {RequestMethod.GET})
-    public String regloginPage(Model model, @RequestParam(value = "next", required = false) String next) {
-        model.addAttribute("next", next);
+    public String regloginPage(Model model) {
+
         return "login";
     }
 
-
-    /*登录* */
     @RequestMapping(path = {"/login/"}, method = {RequestMethod.POST})
     public String login(Model model, @RequestParam("username") String username,
                         @RequestParam("password") String password,
-                        @RequestParam(value="next", required = false) String next,
-                        @RequestParam(value="rememberme", defaultValue = "false") boolean rememberme,
-                        HttpServletResponse response) {
-        try {
-            Map<String, Object> map = userService.login(username, password);
-            if (map.containsKey("ticket")) {
-                Cookie cookie = new Cookie("ticket", map.get("ticket").toString());
+                        HttpServletResponse response){
+        try{
+            Map<String, String> map = userService.login(username,password);
+
+            if ( map.containsKey("ticket")){
+                Cookie cookie = new Cookie("ticket", map.get("ticket"));
                 cookie.setPath("/");
-                if (rememberme) {
-                    cookie.setMaxAge(3600*24*5);
-                }
-                response.addCookie(cookie);
-                if (StringUtils.isNotBlank(next)) {
-                    return "redirect:" + next;
-                }
+                response.addCookie(cookie);//浏览器下发一个ticket
                 return "redirect:/";
-            } else {
+            }else {
                 model.addAttribute("msg", map.get("msg"));
                 return "login";
             }
 
-        } catch (Exception e) {
-            logger.error("登陆异常" + e.getMessage());
+        }catch (Exception e){
+            logger.error("密码错误",e.getMessage());
             return "login";
         }
+
     }
 
-    /*登出*/
-    @RequestMapping(path = {"/logout"}, method = {RequestMethod.GET})
-    public  String logout(@CookieValue("ticket") String ticket){
-        userService.logout(ticket);
-        return "redirect:/";
-    }
 
 }

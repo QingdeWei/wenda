@@ -41,7 +41,7 @@ public class IndexController {
     public  String template(Model model){
         model.addAttribute("value1","vvv1");
         List<String> colors = Arrays.asList(new String[] {"RED", "GREEN", "BLUE"});
-        //model传递参数
+        //model传递参数到模板文件
         model.addAttribute("colors",colors);
 
         Map<String, String> map = new HashMap<String, String>();
@@ -54,45 +54,45 @@ public class IndexController {
         return "home";
     }
 //
-//    @RequestMapping(path = {"/request"}, method = RequestMethod.GET)
-//    @ResponseBody
-//    public String request(Model model, HttpServletResponse response,
-//                           HttpServletRequest request,
-//                           HttpSession session,
-//                          @CookieValue("JSESSIONID") String sessionId){
-//        StringBuilder sb = new StringBuilder();
-//        sb.append("COOKIEVALUE: " + sessionId);
+    @RequestMapping(path = {"/request"}, method = RequestMethod.GET)
+    @ResponseBody
+    public String request(Model model, HttpServletResponse response,
+                           HttpServletRequest request,
+                           HttpSession session,
+                          @CookieValue("JSESSIONID") String sessionId){
+        StringBuilder sb = new StringBuilder();
+        sb.append("COOKIEVALUE: " + sessionId);
+
+        Enumeration<String> headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()){
+            String name = headerNames.nextElement();
+            sb.append(name + ":" + request.getHeader(name) + "<br>");
+        }
+        if (request.getCookies() != null){
+            for (Cookie cookie: request.getCookies()){
+                sb.append("Cookie: " + cookie.getName() + " value: " + cookie.getValue());
+            }
+        }
+        sb.append(request.getMethod() + "<br>");
+        sb.append(request.getQueryString() + "<br>");
+        sb.append(request.getPathInfo() + "<br>");
+        sb.append(request.getRequestURI() + "<br>");
+        sb.append(request.getHeader("Connection") +"<br>");
+
+        response.addHeader("nowcoderID", "hello");
+        response.addCookie(new Cookie("username","nowcoder"));
+//        response.getOutputStream().write();
+
+        return sb.toString();
+    }
 //
-//        Enumeration<String> headerNames = request.getHeaderNames();
-//        while (headerNames.hasMoreElements()){
-//            String name = headerNames.nextElement();
-//            sb.append(name + ":" + request.getHeader(name) + "<br>");
-//        }
-//        if (request.getCookies() != null){
-//            for (Cookie cookie: request.getCookies()){
-//                sb.append("Cookie: " + cookie.getName() + " value: " + cookie.getValue());
-//            }
-//        }
-//        sb.append(request.getMethod() + "<br>");
-//        sb.append(request.getQueryString() + "<br>");
-//        sb.append(request.getPathInfo() + "<br>");
-//        sb.append(request.getRequestURI() + "<br>");
-//        sb.append(request.getHeader("Connection") +"<br>");
-//
-//        response.addHeader("nowcoderID", "hello");
-//        response.addCookie(new Cookie("username","nowcoder"));
-//
-//
-//        return sb.toString();
-//    }
-//
-////    @RequestMapping(path = {"/redirect/{code}"}, method = RequestMethod.GET)
-////    public String redirect(@PathVariable("code") int code ,
-////                           HttpSession httpSession){
-////        httpSession.setAttribute("msg","jump from redirect");
-////        return "redirect:/";
-////    }
-//
+    @RequestMapping(path = {"/redirect/{code}"}, method = RequestMethod.GET)
+    public String redirect(@PathVariable("code") int code ,
+                           HttpSession httpSession){
+        httpSession.setAttribute("msg","jump from redirect");
+        return "redirect:/";
+    }
+
 //    @RequestMapping(path = {"/redirect/{code}"}, method = RequestMethod.GET)
 //    public RedirectView redirect(@PathVariable("code") int code ,
 //                                 HttpSession httpSession){
@@ -112,6 +112,8 @@ public class IndexController {
 //        }
 //        throw new IllegalArgumentException("参数不对");
 //    }
+
+
 //
     //异常的统一处理
     @ExceptionHandler()
