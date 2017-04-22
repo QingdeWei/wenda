@@ -1,5 +1,5 @@
 # wenda Project
-## 本项目是跟随牛客网高级项目课程学习网站搭建。本项目的最终目标是搭建一个类似于知乎的问答网站。   
+## 本项目的目标是搭建一个类似于知乎的问答网站，前端页面的素材来源于牛客网。 
 ## 项目实现功能：
 1. 用户注册、登录
 2. 问题发布、问题排序、问题分类
@@ -18,6 +18,8 @@
 > SpringBoot项目创建官方入口：http://projects.spring.io/spring-boot/#quick-start 
 
 > SpringBoot项目官方文档： https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/ 
+
+> SpringMVC官方文档（4.3.8.RELEASE）：http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/
 
 > Maven官方网站：http://maven.apache.org/
 
@@ -38,6 +40,7 @@
 
 ## 其他帮助文档
 > 拦截器：http://www.mkyong.com/spring-mvc/spring-mvc-handler-interceptors-example/
+
 > MD5和salt： http://www.tuicool.com/articles/AryyIr
 
 ## 程序员问答社区：
