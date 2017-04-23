@@ -56,7 +56,7 @@ public class PassportInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
         //渲染之前，将user渲染到velocity的上下文
         if (modelAndView != null){
-            modelAndView.addObject("user", hostHolder.getUser());
+            modelAndView.addObject("user", hostHolder.getUser());//这里是getUser()方法，刚开始使用了getId()导致找不到user，user始终为空，程序出现错误
         }
     }
 

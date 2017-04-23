@@ -32,6 +32,7 @@ public class LoginController {
     @RequestMapping(path = {"/reg/"}, method = {RequestMethod.POST})
     public String reg(Model model, @RequestParam("username") String username,
                       @RequestParam("password") String password,
+                      @RequestParam(value = "next",required = false) String next,
                       HttpServletResponse response){
         try{
             Map<String, String> map = userService.register(username,password);
@@ -40,6 +41,9 @@ public class LoginController {
                 Cookie cookie = new Cookie("ticket", map.get("ticket"));
                 cookie.setPath("/");
                 response.addCookie(cookie);//浏览器下发一个ticket
+                if (StringUtils.isNotBlank(next)){
+                    return "redirect:" + next;
+                }
                 return "redirect:/";
             }else {
                 model.addAttribute("msg", map.get("msg"));
@@ -58,15 +62,22 @@ public class LoginController {
 //        return "redirect:/";
     }
 
-    @RequestMapping(path = {"/reglogin"}, method = {RequestMethod.GET})
-    public String regloginPage(Model model) {
-
-        return "login";
-    }
+//    @RequestMapping(path = {"/reglogin"}, method = {RequestMethod.GET})
+//    public String reglogin(Model model,
+//                               @RequestParam(value = "next",required = false) String next) {
+//        model.addAttribute("next", next);
+//        return "login";
+//    }
+@RequestMapping(path = {"/reglogin"}, method = {RequestMethod.GET})
+public String regloginPage(Model model, @RequestParam(value = "next", defaultValue = "",required = false) String next) {
+    model.addAttribute("next", next);
+    return "login";
+}
 
     @RequestMapping(path = {"/login/"}, method = {RequestMethod.POST})
     public String login(Model model, @RequestParam("username") String username,
                         @RequestParam("password") String password,
+                        @RequestParam(value = "next",required = false) String next,
                         HttpServletResponse response){
         try{
             Map<String, String> map = userService.login(username,password);
@@ -75,6 +86,9 @@ public class LoginController {
                 Cookie cookie = new Cookie("ticket", map.get("ticket"));
                 cookie.setPath("/");
                 response.addCookie(cookie);//浏览器下发一个ticket
+                if (StringUtils.isNotBlank(next)){
+                    return "redirect:" + next;
+                }
                 return "redirect:/";
             }else {
                 model.addAttribute("msg", map.get("msg"));
@@ -88,5 +102,12 @@ public class LoginController {
 
     }
 
+
+    /*登出*/
+    @RequestMapping("/logout")
+    String logout(@CookieValue("ticket") String ticket){
+        userService.logout(ticket);
+        return "redirect:/";
+    }
 
 }
