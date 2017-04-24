@@ -1,63 +1,57 @@
-
-<!--该部分用来学习velocity语法-->
-
 <html>
-Hello
 <body>
 <pre>
-    <!--变量从后台传递过来的-->
-
     #*
-    你看不到我~~~
-
+    你看不到我~~~~
     *#
     $!{value1}
-    $!{value2} ##感叹号的意思是如果变量不存在，则强制为空
-    ${value3}  ##不加叹号就当做文本去解析
+    $!{value2} ## 如果不存在，强制为空
+    ${value3}
 
     colors: $!{colors}
+
     #foreach($color in $colors)
         This is Color $!{foreach.index}: $color, $!{foreach.count}
     #end
 
-    map: $!{map}
     #foreach($key in $map.keySet())
-      Number: $key, Value: $map.get($key)
-    #end
-    ##换一种方式遍历map
-     map: $!{map}
-    #foreach($kv in $map.keySet())
-      Number: $kv.key, Value: $kv.value
+        Number: $key, Value: $map.get($key)
     #end
 
-    User: $!{user.name}
-    User: $!{user.description}
-    User: $!{user.getDescription()}
-  ##定义一个变量
-    #set($title = "nowcoder")
+    #foreach($kv in $map.entrySet())
+        Number: $kv.key, Value: $kv.value
+    #end
+
+    User:  $!{user.name}
+    $!{user.description}
+    $!{user.getDescription()}
+
+    #set($title = "nowcoder_title")
     Title: $!{title}
-  ##一般用在公共部分，避免重复代码
+
+
     Parse: #parse("header.html")
     Include: #include("header.html")
-    ##宏
+
     #macro (render_color, $index, $color)
         Color Render Macro $index, $color
     #end
 
     #foreach($color in $colors)
-    #render_color($foreach.index, $color)
+        #render_color($foreach.index, $color)
     #end
 
     #set($hello = "hello")
-    ##将两个字符串连接到一起
     #set($helloworld1 = "$!{hello} world")
-    #set($helloworld2 = "$!{hello} world")
+    $!hello
+    $helloworld1
+    #set($helloworld2 = '$!{hello} world')
+    $helloworld2
 
-    $!{helloworld1}
-    ${helloworld2}
+
+
+
 
 </pre>
-
 </body>
-
 </html>
