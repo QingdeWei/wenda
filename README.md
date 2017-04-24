@@ -43,6 +43,8 @@
 
 > MD5和salt： http://www.tuicool.com/articles/AryyIr
 
+> 阿里巴巴的fastjson库：https://github.com/alibaba/fastjson
+
 ## 程序员问答社区：
 > StackOverflow网站：http://stackoverflow.com/
 
