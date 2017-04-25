@@ -17,6 +17,12 @@ public class    QuestionService {
     QuestionDAO questionDAO;
     @Autowired
     SensitiveService sensitiveService;
+
+
+
+    public Question getById(int id){
+        return questionDAO.getById(id);
+    }
     public int addQuestion(Question question){
         //questionDAO.addQuestion(question);
 
