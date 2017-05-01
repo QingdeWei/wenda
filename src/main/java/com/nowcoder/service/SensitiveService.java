@@ -134,10 +134,10 @@ public class SensitiveService implements InitializingBean{
 
     public static void main(String[] args){
        SensitiveService  s = new SensitiveService();
-        s.addWord("色情");
+        s.addWord("word");
         s.addWord("暴力");
         s.addWord("赌博");
-        System.out.println(s.filter("你好色^&情").toString());
+        System.out.println(s.filter("暴暴暴暴暴暴暴暴暴暴力^&情").toString());
 
     }
 
