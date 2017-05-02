@@ -9,6 +9,9 @@ import java.util.Date;
 * 站内信的model，跟数据库字段一一匹配
 * */
 public class Message {
+
+
+    private int id;
     private int fromId;
     private int toId;
     private String content;
@@ -16,6 +19,13 @@ public class Message {
     private int hasRead;
     private String conversationId;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public int getFromId() {
         return fromId;
     }
