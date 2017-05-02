@@ -2,18 +2,22 @@ package com.nowcoder.controller;
 
 import ch.qos.logback.core.encoder.EchoEncoder;
 import com.alibaba.fastjson.JSONObject;
-import com.nowcoder.model.HostHolder;
-import com.nowcoder.model.Question;
+import com.nowcoder.model.*;
+import com.nowcoder.service.CommentService;
 import com.nowcoder.service.QuestionService;
+import com.nowcoder.service.UserService;
 import com.nowcoder.util.WendaUtil;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -21,12 +25,18 @@ import java.util.Date;
  */
 @Controller
 public class QuestionController {
-    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(QuestionController.class);
+    private static final Logger logger = LoggerFactory.getLogger(QuestionController.class);
 
     @Autowired
     HostHolder hostHolder;
     @Autowired
     QuestionService questionService;
+    @Autowired
+    CommentService commentService;
+    @Autowired
+    UserService userService;
+
+
     @RequestMapping(path = "/question/add", method = RequestMethod.POST)
     @ResponseBody
     public String addQuestion(@RequestParam("title") String title,
@@ -55,8 +65,18 @@ public class QuestionController {
     @RequestMapping(path = "/question/{qid}", method = RequestMethod.GET)
     public String questionDetail(Model model,
                                  @PathVariable("qid") int qid){
+
         Question question =questionService.getById(qid);
         model.addAttribute("question", question);
+        List<Comment> commentsList = commentService.getCommentsByEntity(qid, EntityType.ENTITY_QUESTION);
+        List<ViewObject> vos  = new ArrayList<>();
+        for (Comment comment : commentsList){
+            ViewObject vo = new ViewObject();
+            vo.set("comment",comment);
+            vo.set("user",userService.getUser(comment.getUserId()));
+            vos.add(vo);
+        }
+        model.addAttribute("comments",vos);
         return "detail";
     }
 }

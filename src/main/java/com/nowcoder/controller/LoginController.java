@@ -101,8 +101,6 @@ public String regloginPage(Model model, @RequestParam(value = "next", defaultVal
         }
 
     }
-
-
     /*登出*/
     @RequestMapping("/logout")
     String logout(@CookieValue("ticket") String ticket){
