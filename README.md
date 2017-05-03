@@ -31,6 +31,8 @@
 
 > 抓包工具Fiddler：http://www.telerik.com/fiddler
 
+> Java SE Specifications文档下载: http://docs.oracle.com/javase/specs/
+
 ## HTTP协议相关官网
 > HTTP协议官网：https://www.w3.org/Protocols/
 
