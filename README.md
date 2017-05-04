@@ -31,6 +31,8 @@
 
 > 抓包工具Fiddler：http://www.telerik.com/fiddler
 
+> Redis官方文档：https://redis.io/documentation
+
 ## HTTP协议相关官网
 > HTTP协议官网：https://www.w3.org/Protocols/
 
@@ -44,6 +46,9 @@
 > MD5和salt： http://www.tuicool.com/articles/AryyIr
 
 > 阿里巴巴的fastjson库：https://github.com/alibaba/fastjson
+
+## 工具下载地址
+> redis在windows的版本下载地址：https://github.com/MSOpenTech/redis/releases
 
 ## 程序员问答社区：
 > StackOverflow网站：http://stackoverflow.com/
