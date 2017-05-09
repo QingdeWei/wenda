@@ -79,6 +79,7 @@ public class MessageController {
             vo.set("conversation",message);
             int targetId = message.getFromId() == localUserId ? message.getToId() : message.getFromId();
             vo.set("user",userService.getUser(targetId));
+            vo.set("unread", messageService.getConversationUnreadCount(localUserId, message.getConversationId()));
             conversations.add(vo);
         }
         model.addAttribute("conversations",conversations);
@@ -90,9 +91,11 @@ public class MessageController {
     public String getConversationDetail(Model model,
                                         @RequestParam("conversationId") String conversationId){
         try {
+
             List<Message> messageList = messageService.getConversationDetail(conversationId,0,10);
             List<ViewObject> messages = new ArrayList<ViewObject>();
             for (Message message: messageList){
+
                 ViewObject vo = new ViewObject();
                 vo.set("message",message);
                 User user = userService.getUser(message.getFromId());

@@ -71,7 +71,7 @@ public class QuestionController {
         Question question =questionService.getById(qid);
         model.addAttribute("question", question);
         List<Comment> commentsList = commentService.getCommentsByEntity(qid, EntityType.ENTITY_QUESTION);
-        List<ViewObject> vos  = new ArrayList<>();
+        List<ViewObject> comments  = new ArrayList<ViewObject>();
         for (Comment comment : commentsList){
             ViewObject vo = new ViewObject();
             vo.set("comment",comment);
@@ -83,9 +83,9 @@ public class QuestionController {
             vo.set("likeCount",likeService.getLikeCount(EntityType.ENTITY_COMMENT,comment.getId()));
 
             vo.set("user",userService.getUser(comment.getUserId()));
-            vos.add(vo);
+            comments.add(vo);
         }
-        model.addAttribute("comments",vos);
+        model.addAttribute("comments",comments);
         return "detail";
     }
 }
