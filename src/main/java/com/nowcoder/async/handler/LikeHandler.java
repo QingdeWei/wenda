@@ -25,7 +25,7 @@ public class LikeHandler implements EventHandler {
     @Autowired
     UserService userService;
 
-
+    //点赞后给用户发站内信
     @Override
     public void doHandler(EventModel model) {
         Message message =  new Message();
@@ -42,6 +42,6 @@ public class LikeHandler implements EventHandler {
 
     @Override
     public List<EventType> getSupportEventTypes() {
-        return Arrays.asList(EventType.LIKE);
+        return Arrays.asList(EventType.LIKE);//这里只关注点赞的事件
     }
 }

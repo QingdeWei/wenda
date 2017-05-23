@@ -25,6 +25,7 @@ public class EventConsumer implements InitializingBean,ApplicationContextAware{
 
     private static final Logger logger = LoggerFactory.getLogger(EventConsumer.class);
 
+    //
     private Map<EventType, List<EventHandler>> config = new HashMap<EventType,List<EventHandler>>();
     private ApplicationContext applicationContext;
 
@@ -33,6 +34,8 @@ public class EventConsumer implements InitializingBean,ApplicationContextAware{
 
     @Override
     public void afterPropertiesSet() throws Exception {
+
+        //该行代码可以从EventHandler类中找出所有的实现了EventHandler接口的实例，方便扩展
         Map<String, EventHandler> beans = applicationContext.getBeansOfType(EventHandler.class);
         if (beans != null) {
             for (Map.Entry<String, EventHandler> entry : beans.entrySet()) {
