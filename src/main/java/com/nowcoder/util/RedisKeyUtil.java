@@ -31,4 +31,8 @@ public class RedisKeyUtil {
     public static String getEventQueueKey(){
         return BIZ_EVENTQUEUE;
     }
+
+    public static String getTimelineKey(int userId) {
+        return BIZ_TIMELINE + SPLIT + String.valueOf(userId);
+    }
 }
