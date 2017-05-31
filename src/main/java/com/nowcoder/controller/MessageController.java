@@ -52,7 +52,7 @@ public class MessageController {
             message.setFromId(hostHolder.getUser().getId());
             message.setToId(user.getId());
 
-            messageService.addMesssage(message);
+            messageService.addMessage(message);
             return WendaUtil.getJSONString(0);
 
         }else {

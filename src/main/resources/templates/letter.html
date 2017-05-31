@@ -5,25 +5,22 @@
             <ul class="letter-list">
                 #foreach($conversation in $conversations)
                 <li id="conversation-item-10005_622873">
-                    <a class="letter-link" href="/msg/detail?conversationId=$conversation.conversation.conversationId"></a>
+                    <a class="letter-link" href="/msg/detail?conversationId=$conversation.message.conversationId"></a>
                     <div class="letter-info">
-                        <span class="l-time">$date.format('yyyy-MM-dd HH:mm:ss', $conversation.conversation.createdDate)</span>
+                        <span class="l-time">$data.format('yyyy-MM-dd HH:mm:ss', $conversation.message.createdDate)</span>
                         <div class="l-operate-bar">
                             <!--<a href="javascript:void(0);" class="sns-action-del" data-id="10005_622873">
                             删除
                             </a>-->
-                            <a href="/msg/detail?$conversation.conversation.conversationId">
-                                共$conversation.conversation.id条会话
+                            <a href="/msg/detail?$conversation.message.conversationId">
+                                共$conversation.message.id条会话
                             </a>
                         </div>
                     </div>
                     <div class="chat-headbox">
-                        ##if($)
                         <span class="msg-num">
                             $conversation.unread
                         </span>
-                        ##end
-
                         <a class="list-head">
                             <img alt="头像" src="$conversation.user.headUrl">
                         </a>
@@ -33,7 +30,7 @@
                             $conversation.user.name
                         </a>
                         <p class="letter-brief">
-                            $conversation.conversation.content
+                            $conversation.message.content
                         </p>
                     </div>
                 </li>
@@ -42,5 +39,6 @@
 
         </div>
     </div>
-
+#parse("js.html")
+<script type="text/javascript" src="/scripts/main/site/detail.js"></script>
 #parse("footer.html")

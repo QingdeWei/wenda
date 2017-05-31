@@ -19,7 +19,7 @@ public class MessageService {
     SensitiveService sensitiveService;
 
 
-    public int addMesssage(Message message){
+    public int addMessage(Message message){
         //过滤一下消息
         message.setContent(sensitiveService.filter(message.getContent()));
         return messageDAO.addMessage(message) > 0 ? message.getId() : 0;
