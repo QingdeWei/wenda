@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by ZGH on 2017/4/1.
+ * Created by VictorWei on 2017/4/1.
  */
 @Controller
 public class SettingController {

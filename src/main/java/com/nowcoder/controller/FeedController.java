@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ZGH on 2017/5/31.
+ * Created by VictorWei on 2017/5/31.
  */
 @Controller
 public class FeedController {

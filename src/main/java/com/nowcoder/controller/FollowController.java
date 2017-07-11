@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by ZGH on 2017/5/31.
+ * Created by VictorWei on 2017/5/31.
  */
 @Controller
 public class FollowController {

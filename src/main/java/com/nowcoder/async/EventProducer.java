@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 /**
- * Created by ZGH on 2017/5/16.
+ * Created by VictorWei on 2017/5/16.
  */
 @Service
 public class EventProducer {

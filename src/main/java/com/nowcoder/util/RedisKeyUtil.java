@@ -1,7 +1,7 @@
 package com.nowcoder.util;
 
 /**
- * Created by ZGH on 2017/5/9.
+ * Created by VictorWei on 2017/5/9.
  */
 public class RedisKeyUtil {
     private static String SPLIT = ":";

@@ -20,7 +20,7 @@ import org.springframework.web.util.HtmlUtils;
 import java.util.Date;
 
 /**
- * Created by ZGH on 2017/5/1.
+ * Created by VictorWei on 2017/5/1.
  */
 @Controller
 public class CommentController {

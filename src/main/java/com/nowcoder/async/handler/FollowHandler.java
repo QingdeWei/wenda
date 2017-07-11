@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by ZGH on 2017/5/31.
+ * Created by VictorWei on 2017/5/31.
  */
 @Component
 public class FollowHandler implements EventHandler {
