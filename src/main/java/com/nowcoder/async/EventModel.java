@@ -17,6 +17,8 @@ public class EventModel {
 
 
     public EventModel(){}
+
+    //这里使用了Builder设计模式
     public  EventModel(EventType type){
         this.type = type;
     }

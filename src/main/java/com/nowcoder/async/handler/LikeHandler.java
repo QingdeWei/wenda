@@ -9,6 +9,7 @@ import com.nowcoder.service.MessageService;
 import com.nowcoder.service.UserService;
 import com.nowcoder.util.WendaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -17,6 +18,7 @@ import java.util.List;
 /**
  * Created by VictorWei on 2017/5/16.
  */
+@Component
 public class LikeHandler implements EventHandler {
 
     @Autowired

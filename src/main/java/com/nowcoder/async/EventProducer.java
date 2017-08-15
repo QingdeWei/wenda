@@ -25,8 +25,6 @@ public class EventProducer {
             String key = RedisKeyUtil.getEventQueueKey();
             jedisAdaptor.lpush(key, json);
             return true;
-
-
         }catch (Exception e){
             return false;
         }

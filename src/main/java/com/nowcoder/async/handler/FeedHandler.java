@@ -11,12 +11,14 @@ import com.nowcoder.model.User;
 import com.nowcoder.service.*;
 import com.nowcoder.util.RedisKeyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 /**
  * Created by VictorWei on 2017/5/31.
  */
+@Component
 public class FeedHandler implements EventHandler{
     @Autowired
     FollowService followService;
