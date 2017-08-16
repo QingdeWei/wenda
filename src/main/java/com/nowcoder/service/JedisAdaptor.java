@@ -26,6 +26,7 @@ public class JedisAdaptor implements InitializingBean{
     public void afterPropertiesSet() throws Exception {
         pool = new JedisPool("redis://localhost:6379/10");
     }
+
     public long sadd(String key, String value){
         Jedis jedis=null;
     try {
@@ -119,6 +120,7 @@ public class JedisAdaptor implements InitializingBean{
         return pool.getResource();
     }
 
+    //multi标记一个事务的开始
     public Transaction multi(Jedis jedis){
         try{
             return jedis.multi();
@@ -128,6 +130,7 @@ public class JedisAdaptor implements InitializingBean{
         return null;
     }
 
+    //触发事物
     public List<Object> exec(Transaction tx, Jedis jedis){
         try{
             return tx.exec();

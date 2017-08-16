@@ -33,6 +33,9 @@
 
 > Java SE Specifications文档下载: http://docs.oracle.com/javase/specs/
 
+> Jedis官方手册：http://xetorthio.github.io/jedis/
+
+
 ## HTTP协议相关官网
 > HTTP协议官网：https://www.w3.org/Protocols/
 

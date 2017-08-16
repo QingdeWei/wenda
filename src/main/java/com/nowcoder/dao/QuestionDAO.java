@@ -23,7 +23,7 @@ public interface QuestionDAO {
     @Select({" select ",SELECT_FIELDS, " from ", TABLE_NAME, " where id = #{id}"})
     Question getById(int id);
 
-
+    //该方法使用了MyBatis的XML配置来实现查询
     List<Question> selectLatestQuestions(@Param("userId") int userId, @Param("offset") int offset,
                                          @Param("limit") int limit);
 

@@ -1,9 +1,8 @@
 package com.nowcoder.controller;
 
-import com.nowcoder.model.Question;
-import com.nowcoder.model.ViewObject;
-import com.nowcoder.service.QuestionService;
-import com.nowcoder.service.UserService;
+import com.nowcoder.aspect.LikeLog;
+import com.nowcoder.model.*;
+import com.nowcoder.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +29,14 @@ public class HomeController {
     UserService userService;
     @Autowired
     QuestionService questionService;
+    @Autowired
+    FollowService followService;
+    @Autowired
+    CommentService commentService;
+    @Autowired
+    HostHolder hostHolder;
+    @Autowired
+    LikeService likeService;
 
     private List<ViewObject> getQuestions(int userId, int offset, int limit) {
         List<Question> questionList = questionService.getLatestQuestions(userId, offset, limit);
@@ -43,6 +50,7 @@ public class HomeController {
         return vos;
     }
 
+
     @RequestMapping(path = {"/", "/index"}, method = {RequestMethod.GET, RequestMethod.POST})
     public String index(Model model,
                         @RequestParam(value = "pop", defaultValue = "0") int pop) {
@@ -52,8 +60,37 @@ public class HomeController {
 
     @RequestMapping(path = {"/user/{userId}"}, method = {RequestMethod.GET, RequestMethod.POST})
     public String userIndex(Model model, @PathVariable("userId") int userId) {
+
         model.addAttribute("vos", getQuestions(userId, 0, 10));
-        return "index";
+        User user = userService.getUser(userId);
+        //service方法还未实现
+        int commentCount = commentService.getCommentCount(userId, EntityType.ENTITY_USER);
+
+       ViewObject profileUser = getProfileUserInfo(userId);
+        model.addAttribute("profileUser",profileUser);
+        //model.addAttribute("profileUser",commentCount);
+
+        return "profile";
+    }
+
+
+    private ViewObject getProfileUserInfo(int userId){
+        ViewObject profileUser = new ViewObject();
+        int commentCount = commentService.getUserCommentCount(userId);
+        long followerCount = followService.getFollowerCount(EntityType.ENTITY_USER,userId);
+        long followeeCount = followService.getFolloweeCount(userId,EntityType.ENTITY_USER);
+        boolean followed = followService.isFollower(hostHolder.getUser().getId(),EntityType.ENTITY_USER,userId);
+        long likeCount = likeService.getLikeCount(EntityType.ENTITY_USER,userId);
+        User user = userService.getUser(userId);
+        profileUser.set("commentCount",commentCount);
+        profileUser.set("followerCount",followerCount);
+        profileUser.set("followeeCount",followeeCount);
+        profileUser.set("user",user);
+        profileUser.set("followed",followed);
+        profileUser.set("likeCount",likeCount);
+
+        return profileUser;
+
     }
 
 }

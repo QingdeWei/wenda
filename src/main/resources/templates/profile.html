@@ -36,7 +36,7 @@
                                         /
                                         <a target="_blank" href="#" class="zg-link-gray-normal">${profileUser.commentCount} 回答</a>
                                         /
-                                        <a target="_blank" href="#" class="zg-link-gray-normal">548 赞同</a>
+                                        <a target="_blank" href="#" class="zg-link-gray-normal">${profileUser.likeCount} 赞同</a>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                             <meta itemprop="ZReactor" data-id="389034" data-meta="">
                             <div class="feed-item-inner">
                                 <div class="avatar">
-                                    <a title="$!{vo.user.name}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="https://nowcoder.com/people/amuro1230">
+                                    <a title="$!{vo.user.name}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="/user/$!{vo.user.id}">
                                         <img src="$!{vo.user.headUrl}" class="zm-item-img-avatar"></a>
                                 </div>
                                 <div class="feed-main">
@@ -79,7 +79,7 @@
                                                 <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;" data-bind-votecount="">${vo.followCount}</a></div>
                                             <div class="zm-item-answer-author-info">
                                                 <a class="author-link" data-tip="p$b$amuro1230" target="_blank" href="/user/$!{vo.user.id}">$!{vo.user.name}</a>
-                                                ，$data.format('yyyy-MM-dd HH:mm:ss', $!{vo.question.createdDate})</div>
+                                                ，$date.format('yyyy-MM-dd HH:mm:ss', $!{vo.question.createdDate})</div>
                                             <div class="zm-item-vote-info" data-votecount="4168" data-za-module="VoteInfo">
                                                 <span class="voters text">
                                                     <a href="#" class="more text">
