@@ -3,10 +3,7 @@ package com.nowcoder.controller;
 import ch.qos.logback.core.encoder.EchoEncoder;
 import com.alibaba.fastjson.JSONObject;
 import com.nowcoder.model.*;
-import com.nowcoder.service.CommentService;
-import com.nowcoder.service.LikeService;
-import com.nowcoder.service.QuestionService;
-import com.nowcoder.service.UserService;
+import com.nowcoder.service.*;
 import com.nowcoder.util.WendaUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -38,6 +35,8 @@ public class QuestionController {
     UserService userService;
     @Autowired
     LikeService likeService;
+    @Autowired
+    FollowService followService;
 
     @RequestMapping(path = "/question/add", method = RequestMethod.POST)
     @ResponseBody
@@ -86,6 +85,16 @@ public class QuestionController {
             comments.add(vo);
         }
         model.addAttribute("comments",comments);
+
+        //查询所有关注用户的ID
+       List<Integer> followUserIds = followService.getFollowees(question.getUserId(),EntityType.ENTITY_USER,Integer.MAX_VALUE);
+       ArrayList<User> followUsers = new ArrayList<>();
+       //根据用户id，查询用户实体
+       for (Integer i : followUserIds){
+           User user = userService.getUser(i);
+           followUsers.add(user);
+       }
+       model.addAttribute("followUsers",followUsers);
         return "detail";
     }
 }

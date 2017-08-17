@@ -64,9 +64,10 @@ public class FeedHandler implements EventHandler{
     public void doHandler(EventModel model) {
 
         // 为了测试，把model的userId随机一下
-        Random r = new Random();
-        model.setActorId(1+r.nextInt(10));
+//        Random r = new Random();
+//        model.setActorId(1+r.nextInt(10));
 
+        model.setActorId(model.getActorId());
         // 构造一个新鲜事
         Feed feed = new Feed();
         feed.setCreatedDate(new Date());

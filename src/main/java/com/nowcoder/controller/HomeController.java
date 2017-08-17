@@ -1,6 +1,6 @@
 package com.nowcoder.controller;
 
-import com.nowcoder.aspect.LikeLog;
+
 import com.nowcoder.model.*;
 import com.nowcoder.service.*;
 import org.slf4j.Logger;
@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.crypto.Cipher;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +43,7 @@ public class HomeController {
             ViewObject vo = new ViewObject();
             vo.set("question", question);
             vo.set("user", userService.getUser(question.getUserId()));
+            vo.set("followCount",followService.getFollowerCount(EntityType.ENTITY_QUESTION,question.getId()));
             vos.add(vo);
         }
         return vos;
@@ -63,17 +62,15 @@ public class HomeController {
 
         model.addAttribute("vos", getQuestions(userId, 0, 10));
         User user = userService.getUser(userId);
-        //service方法还未实现
-        int commentCount = commentService.getCommentCount(userId, EntityType.ENTITY_USER);
 
        ViewObject profileUser = getProfileUserInfo(userId);
         model.addAttribute("profileUser",profileUser);
-        //model.addAttribute("profileUser",commentCount);
 
         return "profile";
     }
 
 
+    //渲染前端页面
     private ViewObject getProfileUserInfo(int userId){
         ViewObject profileUser = new ViewObject();
         int commentCount = commentService.getUserCommentCount(userId);

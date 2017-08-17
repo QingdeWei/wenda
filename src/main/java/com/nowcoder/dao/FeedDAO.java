@@ -21,9 +21,12 @@ public interface FeedDAO {
             ") values (#{userId},#{data},#{createdDate},#{type})"})
     int addFeed(Feed feed);
 
+    //推
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where id=#{id}"})
     Feed getFeedById(int id);
 
+    //拉
+    //在XML写SQL的查询语句。因为这里的userIds可能没有
     List<Feed> selectUserFeeds(@Param("maxId") int maxId,
                                @Param("userIds") List<Integer> userIds,
                                @Param("count") int count);

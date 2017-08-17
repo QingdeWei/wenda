@@ -166,6 +166,10 @@ public class JedisAdaptor implements InitializingBean{
         return 0;
     }
 
+    /** @param key :查询的key
+        @param start: 查询开始的索引，从0开始
+        @param end ：查询结束的索引，如果查询所有的，取-1
+    **/
     public Set<String> zrevrange(String key, int start, int end){
         Jedis jedis = null;
         try {

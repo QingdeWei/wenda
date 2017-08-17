@@ -52,6 +52,7 @@ public class FeedController {
         return "feeds";
     }
 
+    //拉模式，直接从数据库里取
     @RequestMapping(path = {"/pullfeeds"}, method = {RequestMethod.GET, RequestMethod.POST})
     private String getPullFeeds(Model model) {
         int localUserId = hostHolder.getUser() != null ? hostHolder.getUser().getId() : 0;
