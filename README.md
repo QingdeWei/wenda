@@ -35,6 +35,12 @@
 
 > Jedis官方手册：http://xetorthio.github.io/jedis/
 
+> solr官方网站：http://lucene.apache.org/solr/
+
+> pyspider官方网站：http://docs.pyspider.org/en/latest/
+
+> pyspider的Github：https://github.com/binux/pyspider
+
 
 ## HTTP协议相关官网
 > HTTP协议官网：https://www.w3.org/Protocols/
