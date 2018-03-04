@@ -104,6 +104,7 @@ public String regloginPage(Model model, @RequestParam(value = "next", defaultVal
     /*登出*/
     @RequestMapping("/logout")
     String logout(@CookieValue("ticket") String ticket){
+        //Mapping cookie values with the @CookieValue annotation
         userService.logout(ticket);
         return "redirect:/";
     }

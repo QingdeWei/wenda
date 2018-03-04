@@ -1,7 +1,9 @@
 package com.nowcoder;
 
+import org.apache.catalina.core.ApplicationContext;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -13,6 +15,7 @@ public class WendaApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
 	}
 
 }

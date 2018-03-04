@@ -17,6 +17,9 @@ public class LogAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
+    //编写切点
+    //execution(* com.nowcoder.controller.IndexController.*(..)) 是切点表达式
+    //“*”号表明了我们不关心方法返回值的类型
     @Before("execution(* com.nowcoder.controller.*Controller.*(..))")
     public void beforeMethod(JoinPoint joinPoint) {
         StringBuilder sb = new StringBuilder();

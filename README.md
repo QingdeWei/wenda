@@ -1,6 +1,5 @@
 # wenda Project
-## 本项目的目标是搭建一个问答网站 
-## 项目实现功能：
+## 本项目搭建一个问答网站 ，项目实现的功能如下：
 1. 用户注册、登录
 2. 问题发布、问题排序、问题分类
 3. 图片上传及管理
@@ -9,6 +8,8 @@
 6. 用户关注，粉丝列表
 7. 用户评论、用户点赞、用户点踩
 8. 邮件通知、站内信通知
+
+## 开发环境：IDEA、JDK1.8、MySQL5.7
 
 ## 项目用到的常用工具官方文档：
 > IntelliJ IDEA 使用教程： http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/  
@@ -36,6 +37,8 @@
 > Jedis官方手册：http://xetorthio.github.io/jedis/
 
 > solr官方网站：http://lucene.apache.org/solr/
+
+> solr官方文档：http://lucene.apache.org/solr/guide/6_6/
 
 > pyspider官方网站：http://docs.pyspider.org/en/latest/
 
